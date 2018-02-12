@@ -1,5 +1,5 @@
 {
-  "name": "mypage2",
+  "name": "mypage",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "",
@@ -11,8 +11,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuetify": "^0.17.7"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
