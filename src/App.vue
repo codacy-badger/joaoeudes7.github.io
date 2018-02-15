@@ -1,120 +1,115 @@
 <template>
-	<v-app id="inspire">
-		<v-navigation-drawer fixed clipped app v-model="drawer">
-			<v-list dense>
-				<div v-for="(item, i) in items" v-bind:key="i">
-					<v-layout row v-if="item.heading" align-center :key="i">
-						<v-flex xs6>
-							<v-subheader v-if="item.heading">
-								{{ item.heading }}
-							</v-subheader>
-						</v-flex>
-						<v-flex xs6 class="text-xs-center">
-							<a href="#!" class="body-2 black--text">EDIT</a>
-						</v-flex>
-					</v-layout>
-					<v-list-group v-else-if="item.children" v-model="item.model" no-action>
-						<v-list-tile slot="item" @click="">
-							<v-list-tile-action>
-								<v-icon>{{ item.model ? item.icon : item['icon-alt'] }}</v-icon>
-							</v-list-tile-action>
-							<v-list-tile-content>
-								<v-list-tile-title>
-									{{ item.text }}
-								</v-list-tile-title>
-							</v-list-tile-content>
-						</v-list-tile>
-						<v-list-tile v-for="(child, i) in item.children" :key="i" @click="">
-							<v-list-tile-action v-if="child.icon">
-								<v-icon>{{ child.icon }}</v-icon>
-							</v-list-tile-action>
-							<v-list-tile-content>
-								<v-list-tile-title>
-									{{ child.text }}
-								</v-list-tile-title>
-							</v-list-tile-content>
-						</v-list-tile>
-					</v-list-group>
-					<v-list-tile v-else @click="">
-						<v-list-tile-action>
-							<v-icon>{{ item.icon }}</v-icon>
-						</v-list-tile-action>
-						<v-list-tile-content>
-							<v-list-tile-title>
-								{{ item.text }}
-							</v-list-tile-title>
-						</v-list-tile-content>
-					</v-list-tile>
-				</div>
-			</v-list>
-		</v-navigation-drawer>
-		<v-toolbar color="blue darken-3" dark app clipped-left fixed>
-			<v-toolbar-title :style="$vuetify.breakpoint.smAndUp ? 'width: 300px; min-width: 250px' : 'min-width: 72px'" class="ml-0 pl-3">
-				<v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-				<span class="hidden-xs-only">@joaoeudes7</span>
-			</v-toolbar-title>
-			<v-text-field light solo prepend-icon="search" placeholder="Search" style="max-width: 500px; min-width: 128px"></v-text-field>
-			<div class="d-flex align-center" style="margin-left: auto">
-				<v-btn icon>
-					<v-icon>apps</v-icon>
-				</v-btn>
-				<v-btn icon>
-					<v-icon>notifications</v-icon>
-				</v-btn>
-			</div>
-		</v-toolbar>
-		<v-content>
-			<v-container fluid>
-				<router-view></router-view>
-			</v-container>
-		</v-content>
-		<Footer></Footer>
-	</v-app>
+  <v-app>
+    <v-navigation-drawer persistent :mini-variant="miniVariant" :clipped="clipped" v-model="drawer" enable-resize-watcher fixed app>
+      <v-toolbar flat class="transparent">
+        <v-list class="pa-0">
+          <v-list-tile avatar>
+            <v-list-tile-avatar>
+              <img src="https://avatars1.githubusercontent.com/u/16367752?v=4">
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>João Eudes Lima</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+      <v-divider></v-divider>
+      <v-list>
+        <v-list-tile value="true" v-for="(item, i) in items" :key="i" :exact-active-class="item.link" :to="item.link">
+
+          <v-list-tile-action>
+            <v-icon v-html="item.icon"></v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <!-- <router-link :to=item.link> -->
+              <v-list-tile-title>
+                <v-list-tile-content>
+                <v-list-tile-title v-html="item.title"></v-list-tile-title>
+              </v-list-tile-content>
+              </v-list-tile-title>
+            <!-- </router-link> -->
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar tabs flat app :clipped-left="clipped" color="primary">
+      <v-toolbar-side-icon class="white--text" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-btn class="white--text" icon @click.stop="miniVariant = !miniVariant">
+        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
+      </v-btn>
+      <v-btn class="white--text" icon @click.stop="clipped = !clipped">
+        <v-icon>web</v-icon>
+      </v-btn>
+      <v-toolbar-title class="white--text" v-text="title"></v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-tabs align-with-title slot="extension" color="whiter">
+        <v-tab href="#one">My Profile</v-tab>
+        <v-tab href="#two">Skills</v-tab>
+        <v-tab href="#three">Repositories</v-tab>
+        <v-tabs-slider color="pink"></v-tabs-slider>
+      </v-tabs>
+    </v-toolbar>
+    <v-content>
+      <router-view class="padding" />
+    </v-content>
+    <v-navigation-drawer temporary :right="right" v-model="rightDrawer" fixed app>
+      <v-list>
+        <v-list-tile @click="right = !right">
+          <v-list-tile-action>
+            <v-icon>compare_arrows</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+    <v-footer class="pa-3">
+      <v-spacer></v-spacer>
+      <div>&copy; {{ new Date().getFullYear() }}</div>
+    </v-footer>
+  </v-app>
 </template>
 
 <script>
-	import Footer from './components/Footer.vue'
-	export default {
-		name: 'App',
-		data: () => ({
-			dialog: false,
-			drawer: null,
-			items: [{
-					icon: 'account_circle',
-					text: 'Profile'
-				},
-				{
-					icon: 'description',
-					text: 'Projects'
-				},
-				{
-					icon: 'star',
-					text: 'Stars'
-				},
-				{
-					icon: 'keyboard_arrow_up',
-					'icon-alt': 'contacts',
-					text: 'Contact',
-					model: false,
-					children: [{
-							text: 'Email'
-						},
-						{
-							text: 'Telegram'
-						},
-					]
-				},
-			]
-		}),
-		components: {
-			Footer
-		},
-		props: {
-			source: String
-		}
-	}
+  export default {
+    data() {
+      return {
+        clipped: false,
+        drawer: true,
+        fixed: false,
+        items: [{
+            icon: 'home',
+            title: 'Home',
+            link: '/'
+          },
+          {
+            icon: 'account_circle',
+            title: 'Profile',
+            link: '/profile'
+          },
+          {
+            icon: 'polymer',
+            title: 'Projects',
+            link: '/projects'
+          },
+          {
+            icon: 'contacts',
+            title: 'Contact',
+            link: '/contact'
+          },
+        ],
+        miniVariant: false,
+        right: true,
+        rightDrawer: false,
+        title: 'Github - @joaoeudes7',
+      };
+    },
+    name: 'App',
+  };
 </script>
 
-<style>
-
+<style scoped>
+  .padding {
+    padding: 16px;
+  }
 </style>
+
