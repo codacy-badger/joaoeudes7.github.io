@@ -6,16 +6,17 @@
         <v-list two-line>
           <div v-for="(project, index) in projects" v-bind:key="project.id">
 
-            <v-list-tile avatar>
+            <v-list-tile avatar :href="project.html_url">
               <v-list-tile-avatar>
                 <img src="https://avatars1.githubusercontent.com/u/16367752?v=4">
               </v-list-tile-avatar>
               <v-list-tile-content>
-                <v-list-tile-title><a :href="project.html_url">{{project.name}}</a></v-list-tile-title>
+                <v-list-tile-title>{{project.name}}</v-list-tile-title>
                 <v-list-tile-sub-title v-html="project.description"></v-list-tile-sub-title>
               </v-list-tile-content>
               <v-list-tile-action>
                 <v-list-tile-action-text v-html="formatDate(project.created_at)"></v-list-tile-action-text>
+                <v-btn icon ripple><v-icon color="grey lighten-1">content_copy</v-icon></v-btn>
               </v-list-tile-action>
             </v-list-tile>
             <v-divider v-if="index+1 < projects.length" :key="`divider-${index}`"></v-divider>
@@ -33,7 +34,6 @@
 
 <script>
   import axios from 'axios';
-  // import moment from 'moment';
 
   export default {
     name: 'projects',
@@ -62,7 +62,12 @@
 
       formatDate(date) {
         return new Date(date).toLocaleDateString();
+      },
+
+      copyRepository(url) {
+        return `git clone ${url}`;
       }
+
     }
   };
 </script>
