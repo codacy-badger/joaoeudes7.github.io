@@ -44,15 +44,17 @@
       <v-toolbar-title class="white--text" v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <!-- <v-tabs align-with-title slot="extension" color="whiter">
-              <v-tab href="#one">My Profile</v-tab>
-              <v-tab href="#two">Skills</v-tab>
-              <v-tab href="#three">Repositories</v-tab>
-              <v-tabs-slider color="pink"></v-tabs-slider>
-            </v-tabs> -->
+                  <v-tab href="#one">My Profile</v-tab>
+                  <v-tab href="#two">Skills</v-tab>
+                  <v-tab href="#three">Repositories</v-tab>
+                  <v-tabs-slider color="pink"></v-tabs-slider>
+                </v-tabs> -->
     </v-toolbar>
-    <v-content>
-      <router-view class="padding" />
-    </v-content>
+    <v-container fluid fill-height>
+      <v-layout justify-center align-center>
+        <router-view></router-view>
+      </v-layout>
+    </v-container>
     <v-navigation-drawer temporary :right="right" v-model="rightDrawer" fixed app>
       <v-list>
         <v-list-tile @click="right = !right">
@@ -109,8 +111,6 @@
 </script>
 
 <style scoped>
-  .padding {
-    padding: 16px;
-  }
+
 </style>
 

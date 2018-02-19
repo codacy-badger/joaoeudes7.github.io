@@ -1,8 +1,8 @@
 <template>
   <div>
+    <div v-if="projects.length > 0">
     <v-subheader>Repositories</v-subheader>
-    <v-card>
-      <div v-if="projects.length > 0">
+      <v-card>
         <v-list two-line>
           <div v-for="(project, index) in projects" v-bind:key="project.id">
 
@@ -23,11 +23,12 @@
           </div>
         </v-list>
 
-      </div>
-      <div v-else>
-        <v-progress-circular indeterminate :size="100" color="primary"></v-progress-circular>
-      </div>
-    </v-card>
+
+      </v-card>
+    </div>
+    <div v-else>
+      <v-progress-circular indeterminate :size="100" color="primary"></v-progress-circular>
+    </div>
   </div>
 </template>
 
