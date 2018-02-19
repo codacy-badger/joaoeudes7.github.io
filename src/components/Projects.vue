@@ -16,7 +16,6 @@
               </v-list-tile-content>
               <v-list-tile-action>
                 <v-list-tile-action-text v-html="formatDate(project.created_at)"></v-list-tile-action-text>
-                <v-btn icon ripple><v-icon color="grey lighten-1">content_copy</v-icon></v-btn>
               </v-list-tile-action>
             </v-list-tile>
             <v-divider v-if="index+1 < projects.length" :key="`divider-${index}`"></v-divider>
@@ -39,7 +38,7 @@
     name: 'projects',
     data() {
       return {
-        projects: []
+        projects: [],
       };
     },
 
@@ -51,7 +50,7 @@
 
       getProjects() {
         axios
-          .get(`https://api.github.com/users/joaoeudes7/repos`)
+          .get('https://api.github.com/users/joaoeudes7/repos')
           .then(response => {
             this.projects = response.data;
           })

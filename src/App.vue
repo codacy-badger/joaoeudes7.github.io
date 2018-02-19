@@ -22,17 +22,18 @@
           </v-list-tile-action>
           <v-list-tile-content>
             <!-- <router-link :to=item.link> -->
-              <v-list-tile-title>
-                <v-list-tile-content>
+            <v-list-tile-title>
+              <v-list-tile-content>
                 <v-list-tile-title v-html="item.title"></v-list-tile-title>
               </v-list-tile-content>
-              </v-list-tile-title>
+            </v-list-tile-title>
             <!-- </router-link> -->
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar tabs flat app :clipped-left="clipped" color="primary">
+    <v-toolbar app :clipped-left="clipped" color="primary">
+      <!-- <v-toolbar tabs flat app :clipped-left="clipped" color="primary"> -->
       <v-toolbar-side-icon class="white--text" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-btn class="white--text" icon @click.stop="miniVariant = !miniVariant">
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
@@ -42,12 +43,12 @@
       </v-btn>
       <v-toolbar-title class="white--text" v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-tabs align-with-title slot="extension" color="whiter">
-        <v-tab href="#one">My Profile</v-tab>
-        <v-tab href="#two">Skills</v-tab>
-        <v-tab href="#three">Repositories</v-tab>
-        <v-tabs-slider color="pink"></v-tabs-slider>
-      </v-tabs>
+      <!-- <v-tabs align-with-title slot="extension" color="whiter">
+              <v-tab href="#one">My Profile</v-tab>
+              <v-tab href="#two">Skills</v-tab>
+              <v-tab href="#three">Repositories</v-tab>
+              <v-tabs-slider color="pink"></v-tabs-slider>
+            </v-tabs> -->
     </v-toolbar>
     <v-content>
       <router-view class="padding" />
