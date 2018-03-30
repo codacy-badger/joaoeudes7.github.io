@@ -1,24 +1,21 @@
 <template>
   <div>
-    <div v-if="profileGit.name">
+    <div v-if="profileGit.name" class="center">
       <v-subheader>Profile</v-subheader>
 
       <v-card color="primary" class="white--text">
-        <v-container fluid grid-list-lg>
+        <v-container>
           <v-layout row>
-            <v-flex xs1>
-              <v-card-media :src="profileGit.avatar_url" height="125px" contain></v-card-media>
-            </v-flex>
-            <v-flex xs7>
+            <v-flex>
               <div>
                 <div class="headline">{{profileGit.name}}</div>
                 <div>@{{profileGit.login}}</div>
-                <div>Hi! I'am 20 years, I'm a programmer and developer. Crazy about javascripts framework and passionate about a world without limitations</div>
+                <div>Hi! I'am 20 years, I'm a programmer and developer. Crazy about javascripts framework and passionate about a world without limitations! ;)</div>
               </div>
 
               <v-card-actions>
-                <v-btn color="secundary">Bio & Projects</v-btn>
-                <v-btn color="secundary">Linkedin</v-btn>
+                <v-btn color="secundary" @click="goToProfileGithub()">Bio & Projects</v-btn>
+                <v-btn color="secundary" @click="goToProfileLinkedin()">Linkedin</v-btn>
               </v-card-actions>
 
             </v-flex>
@@ -35,38 +32,45 @@
 </template>
 
 <script>
-  import axios from "axios";
+import axios from 'axios';
 
-  export default {
-    name: "profile",
-    data() {
-      return {
-        profileGit: []
-      };
-    },
-    created() {
-      this.getProjects();
+export default {
+  name: 'profile',
+  data() {
+    return {
+      profileGit: [],
+    };
+  },
+  created() {
+    this.getProjects();
+  },
+
+  methods: {
+    getProjects() {
+      axios
+        .get('https://api.github.com/users/joaoeudes7')
+        .then((response) => {
+          // JSON responses are automatically parsed.
+          this.profileGit = response.data;
+        });
     },
 
-    methods: {
-      getProjects() {
-        axios.get('https://api.github.com/users/joaoeudes7')
-          .then(response => {
-            // JSON responses are automatically parsed.
-            this.profileGit = response.data;
-          })
-          .catch(this.errors.push);
-      },
+    goToProfileGithub() {
+      window.location.href = 'https://github.com/joaoeudes7';
     },
-  };
+    goToProfileLinkedin() {
+      window.location.href = 'https://www.linkedin.com/in/joaoeudes7s';
+    },
+  },
+};
 </script>
 
 <style scoped>
-  .center {
-    text-align: center;
-  }
+.center {
+  text-align: center;
+}
 
-  .progress-circular {
-    margin: 1rem;
-  }
+.progress-circular {
+  margin: 1rem;
+}
 </style>

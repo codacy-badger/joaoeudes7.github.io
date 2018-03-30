@@ -50,11 +50,15 @@
                   <v-tabs-slider color="pink"></v-tabs-slider>
                 </v-tabs> -->
     </v-toolbar>
-    <v-container fluid fill-height>
-      <v-layout justify-center align-center>
-        <router-view></router-view>
-      </v-layout>
-    </v-container>
+    <v-content>
+      <v-container fluid fill-height>
+
+        <v-layout justify-center align-start>
+          <router-view></router-view>
+        </v-layout>
+
+      </v-container>
+    </v-content>
     <v-navigation-drawer temporary :right="right" v-model="rightDrawer" fixed app>
       <v-list>
         <v-list-tile @click="right = !right">
@@ -73,41 +77,42 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        clipped: false,
-        drawer: true,
-        fixed: false,
-        items: [{
-            icon: 'home',
-            title: 'Home',
-            link: '/'
-          },
-          {
-            icon: 'account_circle',
-            title: 'Profile',
-            link: '/profile'
-          },
-          {
-            icon: 'polymer',
-            title: 'Projects',
-            link: '/projects'
-          },
-          {
-            icon: 'contacts',
-            title: 'Contact',
-            link: '/contact'
-          },
-        ],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'Github - @joaoeudes7',
-      };
-    },
-    name: 'App',
-  };
+export default {
+  data() {
+    return {
+      clipped: false,
+      drawer: true,
+      fixed: false,
+      items: [
+        {
+          icon: 'home',
+          title: 'Home',
+          link: '/',
+        },
+        {
+          icon: 'account_circle',
+          title: 'Profile',
+          link: '/profile',
+        },
+        {
+          icon: 'polymer',
+          title: 'Projects',
+          link: '/projects',
+        },
+        {
+          icon: 'contacts',
+          title: 'Contact',
+          link: '/contact',
+        },
+      ],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: '@joaoeudes7',
+    };
+  },
+  name: 'App',
+};
 </script>
 
 <style scoped>
