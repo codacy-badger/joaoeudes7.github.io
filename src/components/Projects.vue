@@ -1,17 +1,15 @@
 <template>
   <div>
     <div v-if="projects.length > 0">
+
       <v-layout row wrap>
-        <v-flex xs6 sm10>
+        <v-flex xs6 sm12 md12>
           <v-subheader>Repositories</v-subheader>
           <v-card>
             <v-list two-line>
               <div v-for="(project, index) in projects" v-bind:key="project.id">
 
-                <v-list-tile avatar :href="project.html_url">
-                  <v-list-tile-avatar>
-                    <img src="https://avatars1.githubusercontent.com/u/16367752?v=4">
-                  </v-list-tile-avatar>
+                <v-list-tile :href="project.html_url">
                   <v-list-tile-content>
                     <v-list-tile-title>{{project.name}}</v-list-tile-title>
                     <v-list-tile-sub-title v-html="project.description"></v-list-tile-sub-title>
