@@ -16,18 +16,15 @@
       <v-divider></v-divider>
       <v-list>
         <v-list-tile value="true" v-for="(item, i) in items" :key="i" :exact-active-class="item.link" :to="item.link">
-
           <v-list-tile-action>
             <v-icon v-html="item.icon"></v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <!-- <router-link :to=item.link> -->
-            <v-list-tile-title>
+            <v-list-tile-title :to=item.link>
               <v-list-tile-content>
                 <v-list-tile-title v-html="item.title"></v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile-title>
-            <!-- </router-link> -->
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -43,20 +40,13 @@
       </v-btn>
       <v-toolbar-title class="white--text" v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-      <!-- <v-tabs align-with-title slot="extension" color="whiter">
-                  <v-tab href="#one">My Profile</v-tab>
-                  <v-tab href="#two">Skills</v-tab>
-                  <v-tab href="#three">Repositories</v-tab>
-                  <v-tabs-slider color="pink"></v-tabs-slider>
-                </v-tabs> -->
     </v-toolbar>
+    <!-- CONTENT -->
     <v-content>
       <v-container fluid fill-height>
-
-        <v-layout justify-center align-start>
+        <v-layout align-start justify-center>
           <router-view></router-view>
         </v-layout>
-
       </v-container>
     </v-content>
     <v-navigation-drawer temporary :right="right" v-model="rightDrawer" fixed app>
@@ -69,6 +59,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
+    <!-- FOOTER -->
     <v-footer class="pa-3">
       <v-spacer></v-spacer>
       <div>&copy; {{ new Date().getFullYear() }}</div>
@@ -88,11 +79,6 @@ export default {
           icon: 'home',
           title: 'Home',
           link: '/',
-        },
-        {
-          icon: 'account_circle',
-          title: 'Profile',
-          link: '/profile',
         },
         {
           icon: 'polymer',
@@ -115,7 +101,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+a:link,
+a:visited {
+  text-decoration: none;
+}
 
+a:hover {
+  text-decoration: none;
+  color: #0059b1;
+}
+
+a:active {
+  text-decoration: none;
+}
 </style>
 
