@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 // Components
 const Profile = () => import(/* webpackChunkName: "group-foo" */ '../components/Profile.vue');
+const Contact = () => import(/* webpackChunkName: "group-foo" */ '../components/Contact.vue');
 const Projects = () => import(/* webpackChunkName: "group-foo" */ '../components/Projects.vue');
 
 Vue.use(Router);
@@ -23,6 +24,11 @@ export default new Router({
       path: '/projects',
       name: 'Projects',
       component: Projects,
+    },
+    {
+      path: '/contact',
+      name: 'Contato',
+      component: Contact,
     },
   ],
 });

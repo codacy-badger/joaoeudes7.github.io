@@ -1,35 +1,30 @@
 <template>
   <div>
-    <div v-if="projects.length > 0">
 
-      <v-layout row wrap>
-        <v-flex xs6 sm12 md12>
-          <v-subheader>Repositories</v-subheader>
-          <v-card>
-            <v-list two-line>
-              <div v-for="(project, index) in projects" v-bind:key="project.id">
-
-                <v-list-tile :href="project.html_url">
-                  <v-list-tile-content>
-                    <v-list-tile-title>{{project.name}}</v-list-tile-title>
-                    <v-list-tile-sub-title v-html="project.description"></v-list-tile-sub-title>
-                  </v-list-tile-content>
-                  <v-list-tile-action>
-                    <v-list-tile-action-text v-html="formatDate(project.created_at)"></v-list-tile-action-text>
-                  </v-list-tile-action>
-                </v-list-tile>
-                <v-divider v-if="index+1 < projects.length" :key="`divider-${index}`"></v-divider>
-
-              </div>
-            </v-list>
-
-          </v-card>
-        </v-flex>
-      </v-layout>
+    <div v-if="projects.length > 0" class="responsive">
+      <v-subheader>Repositories</v-subheader>
+      <v-card>
+        <v-list two-line dense>
+          <template v-for="(project, index) in projects">
+            <v-divider v-if="index != 0" :key="project.name"></v-divider>
+            <v-list-tile :href="project.html_url" :key="index">
+              <v-list-tile-content>
+                <v-list-tile-title>{{project.name}}</v-list-tile-title>
+                <v-list-tile-sub-title v-html="project.description"></v-list-tile-sub-title>
+              </v-list-tile-content>
+              <v-list-tile-action>
+                <v-list-tile-action-text v-html="formatDate(project.created_at)"></v-list-tile-action-text>
+              </v-list-tile-action>
+            </v-list-tile>
+          </template>
+        </v-list>
+      </v-card>
     </div>
+
     <div v-else>
       <v-progress-circular indeterminate :size="100" color="primary"></v-progress-circular>
     </div>
+
   </div>
 </template>
 
@@ -74,25 +69,8 @@ export default {
 </script>
 
 <style scoped>
-/* .md-list {
-  width: 620px;
+.responsive {
   max-width: 100%;
-  display: inline-block;
-  vertical-align: top;
-  border: 1px solid rgba(#000, 0.12);
-} */
-
-a:link,
-a:visited {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #0059b1;
-}
-
-a:active {
-  text-decoration: none;
+  display: grid;
 }
 </style>
