@@ -32,12 +32,12 @@
     <v-toolbar app :clipped-left="clipped" color="primary">
       <!-- <v-toolbar tabs flat app :clipped-left="clipped" color="primary"> -->
       <v-toolbar-side-icon class="white--text" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn class="white--text" icon @click.stop="miniVariant = !miniVariant">
+      <!-- <v-btn class="white--text" icon @click.stop="miniVariant = !miniVariant">
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
-      <v-btn class="white--text" icon @click.stop="clipped = !clipped">
+      </v-btn> -->
+      <!-- <v-btn class="white--text" icon @click.stop="clipped = !clipped">
         <v-icon>web</v-icon>
-      </v-btn>
+      </v-btn> -->
       <v-toolbar-title class="white--text" v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
@@ -102,6 +102,9 @@ export default {
 </script>
 
 <style>
+html {
+  overflow: hidden;
+}
 a:link,
 a:visited {
   text-decoration: none;

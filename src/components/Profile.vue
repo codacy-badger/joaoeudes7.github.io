@@ -14,7 +14,7 @@
               </div>
 
               <v-card-actions>
-                <v-btn color="secundary" @click="goToProfileGithub()">Bio & Projects</v-btn>
+                <v-btn color="secundary" to="/projects">Bio & Projects</v-btn>
                 <v-btn color="secundary" @click="goToProfileLinkedin()">Linkedin</v-btn>
               </v-card-actions>
 
@@ -55,9 +55,6 @@ export default {
         });
     },
 
-    goToProfileGithub() {
-      window.location.href = 'https://github.com/joaoeudes7';
-    },
     goToProfileLinkedin() {
       window.location.href = 'https://www.linkedin.com/in/joaoeudes7s';
     },
