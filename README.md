@@ -1,4 +1,4 @@
-# mypage
+# Page of My Profile [joaoeudes7](https://joaoeudes7.netlify.com)
 
 > A Vue.js project
 
@@ -19,3 +19,6 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+#### Contributors:
+> :octocat: [joaoeudes7](https://github.com/joaoeudes7)
