@@ -22,27 +22,34 @@
 
 <script>
 export default {
-  name: 'contact',
+  name: "contact",
   data() {
     return {
       contacts: [
         {
-          label: 'Gmail',
-          iconClass: 'blue white--text',
-          icon: 'email',
-          linkExternal: 'mail://joaoeudes7@gmail.com',
-          description: 'joaoeudes7@gmail.com',
+          label: "Gmail",
+          iconClass: "blue white--text",
+          icon: "email",
+          linkExternal: "mail://joaoeudes7@gmail.com",
+          description: "joaoeudes7@gmail.com"
         },
         {
-          label: 'Telegram',
-          iconClass: 'blue white--text',
-          icon: 'message',
-          linkExternal: 'https://t.me/OSystem',
-          description: '@OSystem',
+          label: "Telegram",
+          iconClass: "blue white--text",
+          icon: "message",
+          linkExternal: "https://t.me/OSystem",
+          description: "@OSystem"
         },
-      ],
+        {
+          label: "Whatsapp",
+          iconClass: "blue white--text",
+          icon: "message",
+          linkExternal: "https://api.whatsapp.com/send?phone=5584999106028",
+          description: "@OSystem"
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 
